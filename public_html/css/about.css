@@ -1,0 +1,104 @@
+.about {
+    animation: body 1.5s ease-in-out;
+    margin: 50px auto;
+    display: flex;
+    max-width: var(--max-width);
+    padding: 15px;
+    flex-wrap: wrap;
+    border-radius: var(--border-radius);
+    background: var(--color-blanco);
+    justify-content: center;
+    align-items: center;
+  }
+  .slideshow {
+    position: relative;
+    animation: body 2.5s ease-in-out;
+    margin: auto;
+    width: 25em;
+    object-fit: fill;
+    justify-content: center;
+    display: flex;
+  }
+  .slideshow ul,
+  .slideshow li {
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+  .slideshow li img {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    width: 100%;
+  }
+  .pagination {
+    position: absolute;
+    top: 95%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    color: var(--color-negro);
+  }
+  .pagination li {
+    cursor: pointer;
+    margin: 0 8px;
+    transition: color 0.2s ease-in-out;
+  }
+  .pagination li:hover {
+    color: var(--color-gris);
+  }
+  .left,
+  .right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    color: var(--color-gris);
+  }
+  .left .fa-chevron-left:hover,
+  .right .fa-chevron-right:hover {
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  .left .fa-chevron-left:hover,
+  .right .fa-chevron-right:hover {
+    color: var(--color-amarillo);
+  }
+  .left {
+    left: 10px;
+  }
+  .right {
+    right: 10px;
+  }
+  .about .text li {
+    animation: body 3s ease-in-out;
+    line-height: 2;
+    font-size: 15px;
+    text-align: start;
+    list-style-type: disc;
+    list-style-position: center;
+  }
+  .about .text {
+    float: right;
+    width: 60%;
+    margin: 10px 10px;
+    padding-left: 10px;
+  }
+  .about .text h3 {
+    color: var(--color-amarillo);
+  }
+  .about a {
+    color: var(--color-negro);
+    border-radius: 25px;
+    padding: 10px 15px;
+    background: var(--color-amarillo);
+  }
+  @media (max-width: 1200px) {
+    .about .text {
+      width: 90%;
+    }
+    .about img {
+      width: 60%;
+    }
+  }

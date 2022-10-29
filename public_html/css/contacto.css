@@ -1,0 +1,56 @@
+.contacto {
+    animation: body 1.5s ease-in-out;
+    width: 50vw;
+    background: #fff;
+    border-radius: var(--border-radius);
+    margin: 20px auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    justify-content: center;
+  }
+  .form {
+    justify-content: center;
+  }
+  .contacto form {
+    animation: body 2.5s ease-in-out;
+    float: right;
+    display: block;
+    color: var(--color-negro);
+  }
+  .form form .error{
+    background: none;
+    color: var(--color-rojo);
+  }
+  .contacto form label {
+    animation: body 2.5s ease-in-out;
+    color: var(--color-amarillo);
+  }
+  .contacto form input,
+  textarea {
+    animation: body 2.5s ease-in-out;
+    width: 100%;
+    resize: none;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .contacto button {
+    animation: body 2.5s ease-in-out;
+    cursor: pointer;
+    color: var(--color-negro);
+    border-radius: 25px;
+    padding: 10px 15px;
+    background: var(--color-amarillo);
+    border: none;
+  }
+  @media (max-width: 900px){
+    .contacto{
+      width: 80vw;
+    }
+  }
+  @media (max-width: 450px){
+    .contacto{
+      width: 90vw;
+    }
+  }

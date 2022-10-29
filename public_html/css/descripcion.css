@@ -1,0 +1,233 @@
+.descripcion{
+    width: 80vw;
+    background: var(--color-blanco);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 315px;
+}
+.descripcion .buttons{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 79vw;
+    transform: translateX(-5px);
+    margin-top: -10px;
+    align-items: center;
+    z-index: 20;
+}
+.descripcion .buttons .buttons_admin{
+    display: inline;
+}
+.descripcion .buttons span a{
+    color: var(--color-amarillo);
+    font-size: 18px;
+}
+.descripcion .buttons_admin i{
+    background: var(--color-amarillo);
+    padding: 10px;
+    border-radius: 50%;
+    color: var(--color-negro);
+    cursor: pointer;
+}
+.descripcion .text{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.formEdit .formEdit__img, .formEdit .formEdit__text{
+    display: inline-block;
+    margin: 0 10px;
+}
+.formEdit .formEdit__text{
+    width: 50%;
+}
+.formEdit .formEdit__img{
+    align-items: center;
+    width: 40%;
+    height: 30vh;
+    margin: 0 10px;
+}
+.wrap-custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 80%;
+    margin: 0 0.5rem 1rem;
+    text-align: center;
+  }
+  
+  .wrap-custom-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    overflow: hidden;
+    opacity: 0;
+  }
+  
+  .wrap-custom-file label {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
+  }
+  
+  .wrap-custom-file label span {
+    display: block;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #777;
+    -webkit-transition: color 0.4s;
+    transition: color 0.4s;
+  }
+  
+
+  
+  .wrap-custom-file label.file-ok {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .wrap-custom-file label.file-ok span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .wrap-custom-file label:hover {
+    -webkit-transform: translateY(-1rem);
+    transform: translateY(-1rem);
+    background-size: contain;
+  }
+  
+  .wrap-custom-file label:hover span { color: #333; }
+  
+  .wrap-custom-file label.file-ok {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .wrap-custom-file label.file-ok span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+.formEdit input[type="text"]{
+    margin: 10px 0;
+    width: 80%;
+    padding: 5px;
+    border: none;
+    z-index: 20;
+    background: none;
+    border-bottom: 1px solid var(--color-amarillo);
+}
+.formEdit input[type="text"]:focus{
+    border: 1px solid var(--color-amarillo);
+}
+.formEdit #cke_ckeditor{
+    border: none;
+}
+.formEdit #cke_ckeditor span{
+    background: var(--color-amarillo);
+    border: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.descripcion .ctn__content .text img{
+    width: 30%;
+    margin: auto;
+    height: 300px;
+    object-fit: contain;
+}
+.descripcion .ctn__content .formEdit label{
+    width: 100%;
+}
+.descripcion .ctn__content .text .text_content ul li{
+    list-style: disc;
+}
+.descripcion .ctn__content .text .text_content__description{
+    margin: 15px;
+    padding: 10px;
+}
+.descripcion .ctn__content .text .text_content .text_content__description > *{
+    text-align: justify;
+}
+.descripcion .ctn__content button, .descripcion .ctn__content .sendMessage{
+    background: var(--color-amarillo);
+    padding:10px 15px;
+    margin: 10px 0;
+    color: var(--color-negro);
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+.descripcion .ctn__content .text_content{
+    width: 50%;
+    margin: auto;
+}
+.descripcion .ctn__content .formEdit{
+    display: none;
+}
+@media (max-width: 1000px){
+    .descripcion .ctn__content .text_content{
+        width: 80%;
+        margin: auto;
+    }
+    .descripcion .ctn__content img{
+        min-width: 80%;
+        margin: 0 auto;
+    }
+    .descripcion .ctn__content .text img, .descripcion .ctn__content .formEdit label{
+        width: 100%;
+    }
+    .formEdit .formEdit__text{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .formEdit .formEdit__img{
+        width: 100%;
+        height: 50vh;
+        margin: 20px auto;
+    }
+    .wrap-custom-file{
+        margin: 0;
+    }
+}
+@media (max-width: 500px){
+    .descripcion .buttons{
+        width: 82vw;
+        margin: -15px -10px;
+    }
+    .descripcion .ctn__content .text img{
+        min-width: 100%;
+        height: fit-content;
+        margin:0 auto;
+    }
+    .descripcion .ctn__content .text_content{
+        width: 98%;
+    }
+}
