@@ -19,7 +19,7 @@ class GaleryController extends Controller
      */
     public function index()
     {
-        $elements = Galery::paginate();
+        $elements = Galery::latest('updated_at')->paginate();
         return view('galeria', compact('elements'));
     }
     public function description(Galery $element)
@@ -40,7 +40,7 @@ class GaleryController extends Controller
         $fileExt = trim($request->file('img')->getClientOriginalExtension());
         $uploadPath = Config::get('filesystems.disk.uploads.root');
         $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-        $fileName = date('Y-m-d-h-m-s').'-'.$name.'.'.$fileExt;
+        $fileName = date('Y-m-d-h-m-s').'-'.$name.'.';
 
         $url = Str::slug($request->get('title'), '-');
 
@@ -48,16 +48,16 @@ class GaleryController extends Controller
         $galery->title = $request->get('title');
         $galery->url = $url;
         $galery->description = $request->get('ckeditor');
-        $galery->img = $fileName;
+        $galery->img = $fileName."webp";
         $galery->pathImg = date('Y-m-d');
 
         if ($galery->save()) {
             if ($request->hasFile('img')) {
-                $fl = $request->img->storeAs($path, $fileName, 'uploads');
-                $fl = $request->img->storeAs($path, $fileName, 'uploads');
+                $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
+                $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
 
                 $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
-                $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
+                $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName.$fileExt));
 
                 $margen_dcho = 10;
                 $margen_inf = 10;
@@ -65,7 +65,7 @@ class GaleryController extends Controller
                 $sy = imagesy($estampa);
                 imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
 
-                imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 50);
+                imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName."webp", 40);
 
                 imagedestroy($im);
             }
@@ -79,13 +79,13 @@ class GaleryController extends Controller
         ],[
             'title.required' => 'El elemento necesita un titulo',
         ]);
-        
+
         if ($request->img){
             $path = '/'.date('Y-m-d');
             $fileExt = trim($request->file('img')->getClientOriginalExtension());
             $uploadPath = Config::get('filesystems.disk.uploads.root');
             $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-            $fileName = date('Y-m-d-h-m-s').'-'.$name.'.'.$fileExt;
+            $fileName = date('Y-m-d-h-m-s').'-'.$name.'.';
             $pathImg = date('Y-m-d');
             File::delete('img/uploads/'.$element->pathImg.'/'.$element->img);
         }
@@ -93,23 +93,23 @@ class GaleryController extends Controller
             $fileName = $element->img;
             $pathImg = $element->pathImg;
         }
-        
+
 
         $url = Str::slug($request->get('title'), '-');
-        
+
         $element->update([
             'title' => request('title'),
             'description' => request('ckeditor'),
             'url' => $url,
-            'img' => $fileName,
+            'img' => $fileName."webp",
             'pathImg' => $pathImg,
         ]);
         if ($element->update()) {
             if ($request->img){
                 if ($request->hasFile('img')) {
-                    $fl = $request->img->storeAs($path, $fileName, 'uploads');
+                    $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
                     $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
-                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
+                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName.$fileExt));
 
                     $margen_dcho = 10;
                     $margen_inf = 10;
@@ -117,7 +117,7 @@ class GaleryController extends Controller
                     $sy = imagesy($estampa);
                     imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
 
-                    imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 50);
+                    imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName."webp", 40);
 
                     imagedestroy($im);
                 }

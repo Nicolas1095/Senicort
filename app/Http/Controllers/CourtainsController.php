@@ -46,21 +46,21 @@ class CourtainsController extends Controller
         $fileExt = trim($request->file('img')->getClientOriginalExtension());
         $uploadPath = Config::get('filesystems.disk.uploads.root');
         $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-        $fileName = date('Y-m-d-h').'-'.$name.'.'.$fileExt;
+        $fileName = date('Y-m-d-h').'-'.$name.'.';
 
         $url = Str::slug($request->get('title'), '-');
 
         $modelo = new Modelo;
         $modelo->title = $request->get('title');
         $modelo->url = $url;
-        $modelo->img = $fileName;
+        $modelo->img = $fileName."webp";
         $modelo->pathImg = date('Y-m-d');
 
         if ($modelo->save()) {
             if ($request->hasFile('img')) {
-                $fl = $request->img->storeAs($path, $fileName, 'uploads');
+                $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
                 $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
-                $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
+                $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName.$fileExt));
 
                 $margen_dcho = 10;
                 $margen_inf = 10;
@@ -68,21 +68,19 @@ class CourtainsController extends Controller
                 $sy = imagesy($estampa);
                 imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
 
-                imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 50);
+                imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName."webp", 40);
 
                 imagedestroy($im);
             }
-            return redirect()->back()->with('message', 'Se creo correctamente el modelo');
+            return redirect()->route("cortinas.description", $modelo->url)->with("message","El modelo se creo con exito");
         }
     }
     public function update(Modelo $model, Request $request)
     {
         $fields = $request->validate([
             'title' => 'required',
-            'ckeditor' => 'required',
         ],[
             'title.required' => 'El modelo necesita un titulo',
-            'ckeditor.required' => 'El modelo necesita una descripcion',
         ]);
 
         if ($request->img){
@@ -90,7 +88,7 @@ class CourtainsController extends Controller
             $fileExt = trim($request->file('img')->getClientOriginalExtension());
             $uploadPath = Config::get('filesystems.disk.uploads.root');
             $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-            $fileName = date('Y-m-d-h').'-'.$name.'.'.$fileExt;
+            $fileName = date('Y-m-d-h').'-'.$name.'.';
             $pathImg = date('Y-m-d');
             File::delete('img/uploads/'.$model->pathImg.'/'.$model->img);
         }
@@ -101,20 +99,20 @@ class CourtainsController extends Controller
 
 
         $url = Str::slug($request->get('title'), '-');
-        
+
         $model->update([
-            'title' => request('title'),
-            'description' => request('ckeditor'),
+            'title' => $request->get('title'),
+            'description' => $request->get('ckeditor'),
             'url' => $url,
-            'img' => $fileName,
+            'img' => $fileName."webp",
             'pathImg' => $pathImg,
         ]);
         if ($model->update()) {
             if ($request->img){
                 if ($request->hasFile('img')) {
-                    $fl = $request->img->storeAs($path, $fileName, 'uploads');
+                    $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
                     $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
-                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
+                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName.$fileExt));
 
                     $margen_dcho = 10;
                     $margen_inf = 10;
@@ -122,7 +120,7 @@ class CourtainsController extends Controller
                     $sy = imagesy($estampa);
                     imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
 
-                    imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 50);
+                    imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName."webp", 40);
 
                     imagedestroy($im);
                 }

@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Storage;
 use DB;
 
 class SearchController extends Controller
-{  
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {   
+    {
         $elements = [
                         Modelo::where("title", "LIKE", "%{$request->get('search')}%")->get(),
                         Mantenimiento::where("title", "LIKE", "%{$request->get('search')}%")->get(),

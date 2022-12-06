@@ -95,8 +95,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'cortinas@senicort.in'),
-        'name' => env('MAIL_FROM_NAME', 'Nicolas Alexander'),
+        'address' => env('MAIL_FROM_ADDRESS', 'edisongalarraga@senicort.in'),
+        'name' => env('MAIL_FROM_NAME', 'Senicort'),
     ],
 
     /*

@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Incio')
+@section('title', 'Inicio')
 @section('cssName', 'inicio')
 @section('content')
         <div class="portada">

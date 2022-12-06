@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Mail;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Bus\Queueable;
@@ -11,16 +12,21 @@ use Illuminate\Queue\SerializesModels;
 class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
-    public $subject = "Mensaje recibido desde el sitio web";
+    public $email;
+    public $name;
     public $msg;
+    public $subject = "Mensaje recibido desde el sitio web";
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($msg)
+    public function __construct($msg, $email, $name, $subject)
     {
         $this->msg = $msg;
+        $this->subject = $subject;
+        $this->name = $name;
+        $this->email = $email;
     }
 
     /**
@@ -30,6 +36,11 @@ class MessageReceived extends Mailable
      */
     public function build()
     {
-        return $this->from('edisongalarraga@senicort.in','Nicolas Alexander')->view('emails.message-received');
+        $this->from(env('MAIL_FROM_ADDRESS'), $this->name);
+        $this->priority('high');
+        $this->subject($this->subject);
+        $this->view('emails.message-received');
+        $this->replyTo($this->email, $this->name);
+        return $this;
     }
 }

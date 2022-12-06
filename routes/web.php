@@ -45,4 +45,4 @@ Route::delete('trabajos/{element}', [TrabajosController::class, 'delete'])->name
 
 Route::view('about', 'about')->name('about');
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);

@@ -4,6 +4,7 @@
 @section('content')
     <h2>Trabajos Realizados</h2>
     <div class="elementos">
+        @include('partials.form-create', ["variables"=>['inputs' => ['input1'=>['name' => 'title', 'labelName' => 'Titulo del elemento']]], 'routeName' => 'trabajos'])
         @if (isset($elements))
         @foreach ($elements as $element)
             <div class="elementos__elemento {{ $element->url }}" title="{{ $element->title }}" data-title="{{ $element->url }}">
@@ -15,7 +16,6 @@
         @include('partials.form-edit', ["variables"=>['inputs' => ['input1'=>['name' => 'title', 'labelName' => 'Titulo de la elemento']]], 'routeName' => 'trabajos', "var" => $element])
         @endforeach
         @endif
-        @include('partials.form-create', ["variables"=>['inputs' => ['input1'=>['name' => 'title', 'labelName' => 'Titulo del elemento']]], 'routeName' => 'trabajos'])
     </div>
     @includeFirst(['partials.pagination', 'model'], ['model' => $elements
     ])

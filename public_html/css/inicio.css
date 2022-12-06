@@ -1,75 +1,79 @@
-  .portada {
-    animation: body 1.5s ease-in-out;
+@font-face {
+    font-family: Arciform;
+    src: url("../Fonts/Arciform.otf");
+}
+@font-face {
+    font-family: "Modulus Bold";
+    src: url("../Fonts/Modulus-Bold.otf");
+}
+.portada {
     display: flex;
     height: 78vh;
     justify-content: center;
     position: relative;
-    background-image: url(../img/persiana.jpg);
+    background-image: url(../img/persiana\ .jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-  .portada__texto {
-    animation: body 2.5s ease-in-out;
+}
+.portada__texto {
     width: 100%;
     margin: auto;
     text-align: center;
     justify-content: center;
     align-items: center;
-  }
-  .portada__texto--animation {
+}
+.portada__texto--animation {
     width: fit-content;
     margin: auto auto 30px auto;
     justify-content: center;
     overflow: hidden;
-  }
-  .portada__texto--animation ul {
+}
+.portada__texto--animation ul {
     margin: 20px 0;
     padding: 0;
-  }
-  .portada__texto--animation ul li {
+}
+.portada__texto--animation ul li {
     margin: 10px 0;
-    font-size: 5vw;
+    font-size: 10vw;
     text-transform: capitalize;
-    color: #c63637;
-  }
-  .portada__texto a {
+    color: #fff;
+    font-family: "Modulus Bold";
+}
+.portada__texto a {
     padding: 10px 20px;
     text-align: center;
     border-radius: var(--border-radius);
-    color: #c63637;
-    font-size: 25px;
+    color: #fff;
+    font-size: 2rem;
+    font-family: Arciform;
     background: -moz-linear-gradient(
-      rgba(211, 208, 203, 0.5),
-      rgba(255, 255, 255, 0.2)
+        rgba(211, 208, 203, 0.5),
+        rgba(255, 255, 255, 0.2)
     );
     border: 3px solid var(--color-negro);
     transition: color 0.1s ease-in-out;
-  }
-  .portada__texto a:active {
+}
+.portada__texto a:active {
     color: var(--color-blanco);
-  }
-  @media (max-width: 1000px) {
+}
+@media (max-width: 1000px) {
     .portada__texto--animation ul {
-      margin: 20px 0;
-      padding: 0;
-      animation: texto-animation 6s infinite;
+        margin: 20px 0;
+        padding: 0;
     }
     .portada__texto--animation ul li {
-      margin: 20px 0;
-      font-size: 20vw;
+        margin: 20px 0;
+        font-size: 20vw;
     }
-  }
-  @media (max-width: 400px) {
+}
+@media (max-width: 400px) {
     .portada__texto--animation ul {
-      margin: 20px 0;
-      padding: 0;
-      animation: texto-animation 6s infinite;
+        margin: 20px 0;
+        padding: 0;
     }
     .portada__texto--animation ul li {
-      line-height: 95px;
-      font-size: 10vw;
+        line-height: 95px;
+        font-size: 10vw;
     }
-  }
-  
-  
+}

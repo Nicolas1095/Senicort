@@ -1,8 +1,10 @@
-svg path{
+.ctn-all h2{
+    font-family: "Rondana Black";
+}
+svg path {
     width: 20px;
-  }
-  .elementos {
-    animation: body 1.5s ease-in-out;
+}
+.elementos {
     max-width: var(--max-width);
     margin: auto;
     display: flex;
@@ -14,9 +16,8 @@ svg path{
     margin-bottom: 20px;
     justify-content: center;
     color: var(--color-negro);
-  }
-  .elementos__elemento {
-    animation: body 2.5s ease-in-out;
+}
+.elementos__elemento {
     background: #fff;
     border-radius: var(--border-radius);
     padding: 10px;
@@ -29,251 +30,263 @@ svg path{
     object-fit: cover;
     padding-bottom: 0;
     transition: opacity 0.5s ease-in-out, color 0.1s ease-in-out;
-  }
-  .elementos__elemento a:active {
+}
+.elementos__elemento a:active {
     color: var(--color-amarillo);
-  }
-  .elementos__elemento a:hover {
+}
+.elementos__elemento a:hover {
     opacity: 0.6;
-  }
-  .elementos__elemento a h3{
+}
+.elementos__elemento a h3 {
     color: var(--color-negro);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 80%;
+    font-family: "Rondana Regular";
     margin: 10px auto;
-  }
-  .elementos__elemento img {
+}
+.elementos__elemento img {
     width: 250px;
     height: 200px;
     object-fit: contain;
-  }
-  /**Form create, edit**/
-.form-container{
-  margin: 20px;
+}
+/**Form create, edit**/
+.form-container {
+    margin: 20px;
 }
 
-.form-container form{
-  box-sizing: border-box;
-  animation: body 2.5s ease-in-out;
-  background: #fff;
-  border-radius: var(--border-radius);
-  padding: 15px;
-  text-align: center;
-  width: 280px;
-  color: var(--color-negro);
-  object-fit: cover;
-  padding-bottom: 0;
-  height: fit-content;
-  transition: opacity 0.5s ease-in-out, color 0.1s ease-in-out;
-  display: flex;
-  flex-direction: column;
+.form-container form {
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    text-align: center;
+    width: 280px;
+    color: var(--color-negro);
+    object-fit: cover;
+    padding-bottom: 0;
+    height: fit-content;
+    transition: opacity 0.5s ease-in-out, color 0.1s ease-in-out;
+    display: flex;
+    flex-direction: column;
 }
-.form-container.disabled{
-  display: none;
+.form-container.disabled {
+    display: none;
 }
-.form-container.enabled{
-  display: unset;
+.form-container.enabled {
+    display: unset;
 }
-.form-container form > *{
-  margin: 10px 0;
+.form-container form > * {
+    margin: 10px 0;
 }
-.form-container form input{
-  padding: 8px;
+.form-container form input {
+    padding: 8px;
 }
-.form-container form .buttons{
-  display: flex;
-  justify-content: space-between;
+.form-container form .buttons {
+    display: flex;
+    justify-content: space-between;
 }
-.form-container form button{
-  padding: 10px 15px;
-  border-radius: 15px;
-  background: var(--color-amarillo);
-  border: none;
-  cursor: pointer;
-  width: max-content;
+.form-container form button {
+    padding: 10px 15px;
+    border-radius: 15px;
+    background: var(--color-amarillo);
+    border: none;
+    cursor: pointer;
+    width: max-content;
 }
-.form-container form a,.form-container form .buttonCancel{
-  padding: 10px 15px;
-  border-radius: 15px;
-  background: var(--color-rojo);
-  cursor: pointer;
-  width: max-content;
-  color: var(--color-negro);
+.form-container form a,
+.form-container form .buttonCancel {
+    padding: 10px 15px;
+    border-radius: 15px;
+    background: var(--color-rojo);
+    cursor: pointer;
+    width: max-content;
+    color: var(--color-negro);
 }
 
-.elementos__elemento.add{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto 0;
-  height: fit-content;
-  opacity: 0.8;
-  animation-name: bodyOpaco;
-  cursor: pointer;
+.elementos__elemento.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0;
+    height: fit-content;
+    opacity: 0.8;
+    cursor: pointer;
+    min-height: 246px;
 }
-.elementos__elemento.disabled{
-  display: none;
+.elementos__elemento.disabled {
+    display: none;
 }
-.elementos__elemento.enabled{
-  display: unset;
+.elementos__elemento.enabled {
+    display: unset;
 }
-.elementos__elemento.add i{
-  padding: 15px;
-  border-radius: 50%;
-  background: var(--color-gris);
+.elementos__elemento.add i {
+    padding: 15px;
+    border-radius: 50%;
+    background: var(--color-gris);
 }
-.options{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  left: 85%;
-  width: fit-content;
-  z-index: 10;
-  position: sticky;
-  margin-bottom: -35px;
+.options {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 85%;
+    width: fit-content;
+    z-index: 10;
+    position: sticky;
+    margin-bottom: -35px;
 }
 .wrap-custom-file {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 150px;
-  margin: 0 0.5rem 1rem;
-  text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 150px;
+    margin: 0 0.5rem 1rem;
+    text-align: center;
 }
 
 .wrap-custom-file input[type="file"] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 2px;
-  overflow: hidden;
-  opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    overflow: hidden;
+    opacity: 0;
 }
 
 .wrap-custom-file label {
-  z-index: 1;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  overflow: hidden;
-  padding: 0 0.5rem;
-  cursor: pointer;
-  background-color: #fff;
-  border-radius: 4px;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
-  transition: transform 0.4s, -webkit-transform 0.4s;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    transition: transform 0.4s;
+    transition: transform 0.4s, -webkit-transform 0.4s;
 }
 
 .wrap-custom-file label span {
-  display: block;
-  margin-top: 2rem;
-  font-size: 1.4rem;
-  color: #777;
-  -webkit-transition: color 0.4s;
-  transition: color 0.4s;
+    display: block;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #777;
+    -webkit-transition: color 0.4s;
+    transition: color 0.4s;
 }
 
 .wrap-custom-file label:hover {
-  -webkit-transform: translateY(-1rem);
-  transform: translateY(-1rem);
+    -webkit-transform: translateY(-1rem);
+    transform: translateY(-1rem);
 }
 
-.wrap-custom-file label:hover span { color: #333; }
+.wrap-custom-file label:hover span {
+    color: #333;
+}
 
 .wrap-custom-file label.file-ok {
-  background-size: cover;
-  background-position: center;
+    background-size: cover;
+    background-position: center;
 }
 
 .wrap-custom-file label.file-ok span {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.3rem;
-  font-size: 1.1rem;
-  color: #000;
-  background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 .wrap-custom-file label:hover {
-  -webkit-transform: translateY(-1rem);
-  transform: translateY(-1rem);
+    -webkit-transform: translateY(-1rem);
+    transform: translateY(-1rem);
 }
 
-.wrap-custom-file label:hover span { color: #333; }
+.wrap-custom-file label:hover span {
+    color: #333;
+}
 
 .wrap-custom-file label.file-ok {
-  background-size: cover;
-  background-position: center;
+    background-size: cover;
+    background-position: center;
 }
 
 .wrap-custom-file label.file-ok span {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0.3rem;
-  font-size: 1.1rem;
-  color: #000;
-  background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
 }
-.options i{
-  padding: 10px;
-  background: var(--color-gris);
-  z-index: 5;
-  border-radius: 50%;
-  cursor: pointer;
-  color: var(--color-amarillo);
+.options i {
+    padding: 10px;
+    background: var(--color-gris);
+    z-index: 5;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-amarillo);
 }
-.options .options__links{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  text-align: right;
-  transform: translate(-52px, 35px);
-  padding: 5px;
-  background: var(--color-gris);
-  display: none;
+.options .options__links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    text-align: right;
+    transform: translate(-52px, 35px);
+    padding: 5px;
+    background: var(--color-gris);
+    display: none;
 }
-.options .options__links span{
-  color: var(--color-negro);
-  cursor: pointer;
-  margin: 5px 0;
+.options .options__links span {
+    color: var(--color-negro);
+    cursor: pointer;
+    margin: 5px 0;
 }
-.pagination{
-  margin: 20px 0;
-  align-items: center;
+.paginator {
+    color: var(--color-negro);
 }
-.pagination span{
-  align-items: center;
+.paginator .disabled {
+    background-color: var(--color-blanco);
 }
-.pagination span, .pagination span span{
-  padding: 5px 8px;
-  border-radius: 50%;
-  align-items: center;
+.pagination {
+    margin: 20px 0;
+    align-items: center;
 }
-.pagination span .link_enabled{
-  color: var(--color-amarillo);
+.pagination span {
+    align-items: center;
 }
-.pagination span .link_disabled{
-  color: var(--color-negro);
-  opacity: 0.6;
+.pagination span,
+.pagination span span,
+.pagination .link_enabled {
+    padding: 5px 8px;
+    border-radius: 50%;
+    align-items: center;
 }
-  @media (max-width: 400px) {
+.pagination .link_enabled {
+    color: var(--color-amarillo);
+}
+.pagination span .link_disabled {
+    opacity: 0.6;
+}
+@media (max-width: 400px) {
     .elementos__elemento img {
-      width: 70vw;
-      height: fit-content;
+        width: 70vw;
+        height: fit-content;
     }
     .elementos__elemento {
-      width: 80vw;
-      min-height: fit-content;
+        width: 80vw;
+        min-height: fit-content;
     }
-  }
+}

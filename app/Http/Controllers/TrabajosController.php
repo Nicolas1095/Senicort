@@ -20,7 +20,7 @@ class TrabajosController extends Controller
      */
     public function index()
     {
-        $elements = Trabajos::paginate();
+        $elements = Trabajos::latest('updated_at')->paginate();
         return view('trabajos', compact('elements'));
     }
     public function description(Trabajos $element)
@@ -41,7 +41,7 @@ class TrabajosController extends Controller
         $fileExt = trim($request->file('img')->getClientOriginalExtension());
         $uploadPath = Config::get('filesystems.disk.uploads.root');
         $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
-        $fileName = date('Y-m-d-h-m-s').'-'.$name.'.'.$fileExt;
+        $fileName = date('Y-m-d-h-m-s').'-'.$name.'.';
 
         $url = Str::slug($request->get('title'), '-');
 
@@ -49,14 +49,14 @@ class TrabajosController extends Controller
         $element->title = $request->get('title');
         $element->description = $request->get('ckeditor');
         $element->url = $url;
-        $element->img = $fileName;
+        $element->img = $fileName."webp";
         $element->pathImg = date('Y-m-d');
 
         if ($element->save()) {
             if ($request->hasFile('img')) {
-                $fl = $request->img->storeAs($path, $fileName, 'uploads');
+                $fl = $request->img->storeAs($path, $fileName.$fileExt, 'uploads');
                 $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
-                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
+                    $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName.$fileExt));
 
                     $margen_dcho = 10;
                     $margen_inf = 10;
@@ -64,7 +64,7 @@ class TrabajosController extends Controller
                     $sy = imagesy($estampa);
                     imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
 
-                    imagejpeg($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 75);
+                    imagejpeg($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName."webp", 40);
 
                     imagedestroy($im);
             }
@@ -95,7 +95,7 @@ class TrabajosController extends Controller
 
 
         $url = Str::slug($request->get('title'), '-');
-        
+
         $element->update([
             'title' => request('title'),
             'description' => request('ckeditor'),
@@ -113,15 +113,15 @@ class TrabajosController extends Controller
                                 $fl = $request->img->storeAs($path, $fileName, 'uploads');
                                 $estampa = imagecreatefrompng(asset('img/marca_agua.png'));
                                 $im = imagecreatefromjpeg(asset('img/uploads/'.date('Y-m-d').'/'.$fileName));
-            
+
                                 $margen_dcho = 10;
                                 $margen_inf = 10;
                                 $sx = imagesx($estampa);
                                 $sy = imagesy($estampa);
                                 imagecopymerge($im, $estampa, imagesx($im) - $sx - $margen_dcho, imagesy($im) - $sy - $margen_inf, 0, 0, imagesx($estampa), imagesy($estampa), 50);
-            
+
                                 imagewebp($im, 'img/uploads/'.date('Y-m-d').'/'.$fileName, 50);
-            
+
                                 imagedestroy($im);
                                 }
                         }
@@ -138,7 +138,7 @@ class TrabajosController extends Controller
         $fileName = $element->img;
         File::delete('img/uploads/'.$pathImg.'/'.$fileName);
         $element->delete();
-        return redirect()->back()->with('message', 'El elemento se elimino correctamente');
+        return redirect("trabajos")->with('message', 'El elemento se elimino correctamente');
     }
-    
+
 }

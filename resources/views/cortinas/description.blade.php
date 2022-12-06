@@ -21,7 +21,6 @@
                 <div class="text_content__description">
                     {!! $element['description'] !!}
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=593986356506" class="sendMessage" target="_blank">Cotizar</a>
             </div>
         </div>
         @auth
@@ -49,7 +48,7 @@
         </form>
     </div>
 @endauth
-      
+
     </div>
 </div>
 @endsection
